@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "8ByAbXrAbiMMqOzlEIl8HdUgKPsxxzVXDpghn12/z9M=",
+  "Source": "TZPU.Services.AuthAPI",
+  "BasePath": "_content/TZPU.Services.AuthAPI",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}

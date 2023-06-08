@@ -1,0 +1,37 @@
+{
+  "Version": 1,
+  "Hash": "l35t2tv6pqlCdG+M/liiVHuNVXaFZT6I9R4mMblYN78=",
+  "Source": "TZPU.Services.ProductAPI",
+  "BasePath": "_content/TZPU.Services.ProductAPI",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [
+    {
+      "Name": "TZPU.Services.ProductAPI\\wwwroot",
+      "Source": "TZPU.Services.ProductAPI",
+      "ContentRoot": "C:\\Users\\miloj\\Desktop\\TZPU-Project\\TZPU\\TZPU.Services.ProductAPI\\wwwroot\\",
+      "BasePath": "_content/TZPU.Services.ProductAPI",
+      "Pattern": "**"
+    }
+  ],
+  "Assets": [
+    {
+      "Identity": "C:\\Users\\miloj\\Desktop\\TZPU-Project\\TZPU\\TZPU.Services.ProductAPI\\wwwroot\\ProductImages\\17.jpg",
+      "SourceId": "TZPU.Services.ProductAPI",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\miloj\\Desktop\\TZPU-Project\\TZPU\\TZPU.Services.ProductAPI\\wwwroot\\",
+      "BasePath": "_content/TZPU.Services.ProductAPI",
+      "RelativePath": "ProductImages/17.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\ProductImages\\17.jpg"
+    }
+  ]
+}

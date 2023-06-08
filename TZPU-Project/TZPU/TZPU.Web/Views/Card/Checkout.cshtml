@@ -1,0 +1,109 @@
+﻿@model CardDto
+
+<form method="post">
+    <input asp-for="CardHeader.UserId" hidden/>
+    <input asp-for="CardHeader.CardHeaderId" hidden/>
+    <input asp-for="CardHeader.CouponCode" hidden />
+    <input asp-for="CardHeader.Discount" hidden />
+    <input asp-for="CardHeader.CardTotal" hidden />
+
+    <div class="border mt-2 p-4 rounded">
+        <div class="container row">
+            <div class="col-md-7 col-12">
+                <span style="font-size:25px;" class="text-primary mb-2">Rezime kupovine</span>
+            </div>
+            <div class="col-md-5 col-12">
+                <a asp-action="CardIndex" class="btn btn-outline-primary form-control">Nazad na Korpu</a>
+            </div>
+            <br /><br /><br />
+            <hr />
+            <div class="col-7">
+                <div class="row pt-2">
+                    <div class="col-12 py-2">
+                        <input asp-for="CardHeader.Name" placeholder="name..." class="form-control" />
+                        <span asp-validation-for="CardHeader.Name" />
+                    </div>
+                    <div class="col-12 py-2">
+                        <input asp-for="CardHeader.Email" placeholder="email..." class="form-control" />
+                        <span asp-validation-for="CardHeader.Email" />
+                    </div>
+                    <div class="col-12 py-2">
+                        <input asp-for="CardHeader.Phone" class="form-control" placeholder="phone number..." />
+                        <span asp-validation-for="CardHeader.Phone" />
+                    </div>
+                    <div class="col-12 pt-2">
+                        <label class="col-form-label">Potvrdite kupovinu kursa</label>
+                    </div>
+
+                </div>
+            </div>
+            <div class="col-5">
+                <div class="card mt-2">
+                    <div class="card-body">
+                        <div class=" d-none d-lg-block">
+                            <div class="row text-danger">
+                                <div class="col-6">
+                                    Detalji Kupovine
+                                </div>
+
+                                <div class="col-3">
+
+                                </div>
+
+                                <div class="col-3">
+                                    Cena
+                                </div>
+
+                                
+                            </div>
+                        </div>
+                        <hr />
+                        @foreach(var cardObj in Model.CardDetails)
+                        {
+                            <div class="row h-100">
+                                <div class="col-6">
+                                    <span style="font-size:20px">@cardObj.Product.Name</span>
+                                </div>
+
+                                <div class="col-3">
+                                </div>
+
+                                <div class="col-3" style="font-size:11px;">
+                                    <span style="font-size:17px;"> @cardObj.Product.Price.ToString("c")</span>
+
+                                </div>
+                            </div>
+                            <hr />
+                        }
+                        
+                        <div class="row">
+                            <div class="col-12 text-center pr-4 text-danger">
+                                Ukupna Cena :  @Model.CardHeader.CardTotal.ToString("c") <br />
+                                @if(Model.CardHeader.Discount > 0)
+                                {
+                                    <span class="text-success"> Popust :  @Model.CardHeader.Discount.ToString("c")</span>
+                                }
+                                
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="card-footer">
+                        <div class="row">
+
+                            <div class="col-12 ">
+                                <button type="submit" class="btn btn-outline-success form-control ">
+                                    <span>Nastavi na plaćanje</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+@section Scripts{
+    <partial name="_ValidationScriptsPartial" />
+}

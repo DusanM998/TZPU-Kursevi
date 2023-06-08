@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\TZPU.Web.props" />
+</Project>

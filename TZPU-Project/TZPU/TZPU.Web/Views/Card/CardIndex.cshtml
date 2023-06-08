@@ -1,0 +1,105 @@
+﻿@model CardDto
+@if (Model.CardHeader != null && Model.CardDetails?.Count() > 0)
+{
+    <form method="post">
+        <br />
+        <input asp-for="CardHeader.UserId" hidden />
+        <input asp-for="CardHeader.CardHeaderId" hidden />
+        <div class="">
+            <div class="card border mt-4 container rounded">
+                <div class="card-header rounded-top bg-light text-primary ml-0 row">
+                    <div class="col-6">
+                        <h3 class="text-success"><i class="bi bi-cart"></i> &nbsp; Korpa</h3>
+                    </div>
+                    <div class="col-6 text-end">
+                        <a asp-action="Index" asp-controller="Home" class="btn btn-outline-warning mt-2 btn-sm">Nastavi kupovinu</a>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class=" d-none d-lg-block">
+                        <div class="row text-info">
+                            <div class="col-lg-2">
+                            </div>
+                            <div class="col-lg-5">
+                                Detalji o kursu
+                            </div>
+                            <div class="col-lg-2">
+                                
+                            </div>
+                            <div class="col-lg-2">
+                                Cena
+                            </div>
+                            
+                            <div class="col-lg-1">
+                            </div>
+                        </div>
+                    </div>
+                    <hr />
+
+                    @foreach (var cardObj in Model.CardDetails)
+                    {
+                        <div class="row h-100">
+                            <div class="col-4 col-md-2 text-center py-2">
+                                <img src="@cardObj.Product.ImageUrl" class="rounded" width="100%" />
+                            </div>
+                            <div class="col-10 col-md-5">
+                                <h5>@cardObj.Product.Name</h5>
+                                <div style="font-size:11px;">@Html.Raw(cardObj.Product.Description)</div>
+                            </div>
+                            <div class="col-3 col-md-2 pt-md-4">
+                                
+                            </div>
+                            <div class="col-3 col-md-2 pt-md-4" style="font-size:11px;">
+                                <span style="font-size:17px;">@string.Format("{0:c}",cardObj.Product.Price) </span>
+                            </div>
+                            
+                            <div class="col-2 col-lg-1 p-0 pt-lg-4 text-center">
+                                <a asp-action="Remove" asp-route-cartDetailsId="@cardObj.CardDetailsId" class="btn btn-sm btn-outline-danger">
+                                    <i class="bi bi-trash-fill"></i>
+                                </a>
+                            </div>
+                        </div>
+                    }
+                    <hr />
+                    <div class="row">
+                        <div class="col-6">
+                            @if (string.IsNullOrEmpty(Model.CardHeader.CouponCode))
+                            {
+                                <span>Coupon:</span>
+                                <input asp-for="CardHeader.CouponCode" />
+                                <button type="submit" asp-action="ApplyCoupon" class="btn btn-sm btn-outline-success"> Primeni </button>
+                            }
+                            else
+                            {
+                                <span>Coupon:</span>
+                                <input asp-for="CardHeader.CouponCode" disabled />
+                                <button type="submit" asp-action="RemoveCoupon" class="btn btn-sm btn-outline-danger"> Obriši </button>
+                            }
+                        </div>
+                        <div class="col-6 text-end">
+                            <span class="text-danger" style="font-size:21px;">  Ukupna Cena :  @string.Format("{0:c}", Model.CardHeader.CardTotal)  <br /></span>
+                            @if (Model.CardHeader.Discount > 0)
+                            {
+                                <span class="text-success"> Order Discount :   @string.Format("{0:c}", Model.CardHeader.Discount ) </span>
+                            }
+                        </div>
+                    </div>
+                </div>
+                <div class="card-footer row p-2">
+                    <div class="col-6 col-md-3">
+                        
+                    </div>
+                    <div class="col-6 col-md-3 offset-md-6">
+                        <a asp-action="Checkout" class="btn btn-outline-success form-control">Ckeckout </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+}
+else
+{
+    <div>
+        <p>Please add items to cart.</p>
+    </div>
+}
